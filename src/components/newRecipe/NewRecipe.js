@@ -18,7 +18,7 @@ class NewRecipe extends Component {
     data.append('title', this.state.title);
     data.append('ingredients', this.state.ingredients);
     data.append('recipe', this.state.recipe);
-    fetch('http://localhost:5000/recipe/create', {
+    fetch('https://myrecipe-be.herokuapp.com/recipe/create', {
       method: 'POST',
       body: data,
     })

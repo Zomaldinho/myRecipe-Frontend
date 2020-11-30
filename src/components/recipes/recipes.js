@@ -8,7 +8,7 @@ class Recipes extends Component {
     };
   }
   componentDidMount() {
-    fetch('http://localhost:5000/')
+    fetch('https://myrecipe-be.herokuapp.com/')
       .then((response) => response.json())
       .then((data) => this.setState({ data }));
   }
@@ -27,7 +27,7 @@ class Recipes extends Component {
             <div className="card m-3" style={{ width: '18rem' }}>
               <img
                 className="card-img-top"
-                src={'http://localhost:5000/' + recipe.image}
+                src={'https://myrecipe-be.herokuapp.com/' + recipe.image}
                 alt="Card image cap"
               />
               <div className="card-body">

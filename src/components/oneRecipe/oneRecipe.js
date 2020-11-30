@@ -13,7 +13,7 @@ class OneRecipe extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:5000/recipe/${this.props.id}`)
+    fetch(`https://myrecipe-be.herokuapp.com/recipe/${this.props.id}`)
       .then((response) => response.json())
       .then((recipe) =>
         this.setState({
@@ -32,7 +32,7 @@ class OneRecipe extends Component {
         'You can not submit empty Title, Ingredients and/or Recipe'
       );
     }
-    fetch(`http://localhost:5000/edit/${this.props.id}`, {
+    fetch(`https://myrecipe-be.herokuapp.com/edit/${this.props.id}`, {
       method: 'post',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({
@@ -57,7 +57,7 @@ class OneRecipe extends Component {
       'Are you sure you want to delete this recipe?'
     );
     if (confirm) {
-      fetch(`http://localhost:5000/delete/${this.props.id}`, {
+      fetch(`https://myrecipe-be.herokuapp.com/delete/${this.props.id}`, {
         method: 'delete',
       })
         .then(this.props.routeChange('home'))
@@ -72,7 +72,7 @@ class OneRecipe extends Component {
         <div className="card mb-3">
           <img
             className="card-img-top"
-            src={'http://localhost:5000/' + recipe.image}
+            src={'https://myrecipe-be.herokuapp.com/' + recipe.image}
             alt="Card cap"
           />
           <div className="card-body">
