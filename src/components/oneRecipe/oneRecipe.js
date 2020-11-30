@@ -60,11 +60,11 @@ class OneRecipe extends Component {
       fetch(`https://myrecipe-be.herokuapp.com/delete/${this.props.id}`, {
         method: 'delete',
       })
-        .then(
+        .then(() => {
           setTimeout(() => {
             this.props.routeChange('home');
-          }, 1000)
-        )
+          }, 2000);
+        })
         .catch((err) => console.log(err));
     }
   };
