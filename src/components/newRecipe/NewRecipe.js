@@ -13,6 +13,11 @@ class NewRecipe extends Component {
 
   //Handling onClick of submit button of add new recipe
   onSubmit = () => {
+    if (!this.state.title || !this.state.ingredients || !this.state.recipe) {
+      return alert(
+        'You can not submit empty Title, Ingredients and/or Recipe'
+      );
+    }
     let data = new FormData();
     data.append('recipeImg', this.state.image);
     data.append('title', this.state.title);
