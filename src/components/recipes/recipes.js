@@ -19,6 +19,22 @@ class Recipes extends Component {
     this.props.routeChange('one');
   }
 
+  //handling onClick of Delete button
+  delete = (id) => {
+    let confirm = window.confirm(
+      'Are you sure you want to delete this recipe?'
+    );
+    if (confirm) {
+      fetch(`https://myrecipe-be.herokuapp.com/delete/${id}`, {
+        method: 'delete',
+      })
+        .then(() => {
+          this.componentDidMount();
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
   render() {
     return (
       <div className="d-flex flex-wrap">
@@ -28,7 +44,7 @@ class Recipes extends Component {
               <img
                 className="card-img-top"
                 src={'https://myrecipe-be.herokuapp.com/' + recipe.image}
-                alt="Card image cap"
+                alt="Card cap"
               />
               <div className="card-body">
                 <h5 className="card-title">{recipe.title}</h5>
@@ -36,9 +52,15 @@ class Recipes extends Component {
                 <p className="card-text">{recipe.recipe}</p>
                 <button
                   onClick={() => this.showOne(recipe._id)}
-                  className="btn btn-primary"
+                  className="btn btn-primary m-2"
                 >
                   More Details
+                </button>
+                <button
+                  onClick={() => this.delete(recipe._id)}
+                  className="btn btn-primary m-2"
+                >
+                  Delete
                 </button>
               </div>
             </div>
